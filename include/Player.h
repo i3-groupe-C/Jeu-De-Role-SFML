@@ -20,6 +20,8 @@ class Player
     public:
         Player();
 
+        //void updateMovement();
+
         // Functions
         void update();
         void render(sf::RenderTarget& target);
