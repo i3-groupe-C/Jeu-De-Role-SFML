@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -std=c++11
-SRC = main.cpp menu.cpp systeme/text.cpp
+SRC = main.cpp game.cpp systeme/player.cpp
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 EXEC = main

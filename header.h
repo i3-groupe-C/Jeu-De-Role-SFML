@@ -4,13 +4,14 @@
 #define HAUTEUR 600
 #define LARGEUR 800
 
-#include <SFML/Graphics.hpp>
 #include <iostream>
+#include <time.h>
 
-// Les composents
-sf::Text prepareText(const sf::Font& font, const std::string& message, int fontSize, const sf::Color& textColor, const sf::Vector2f& position);
-
-sf::Text menu();
-int main(int argc, char* argv[]);
+// SFML library
+#include <SFML/System.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/Network.hpp>
 
 #endif
