@@ -7,6 +7,8 @@ class Player
         sf::Texture texture;
 
         //Animation
+        float size_x;
+        float size_y;
         int direction_horizontale = 0;
         int direction_verticale = 0;
 
@@ -17,6 +19,8 @@ class Player
 
         void initTexture();
         void initSprite();
+        void setSize();
+        
 
     public:
         Player();

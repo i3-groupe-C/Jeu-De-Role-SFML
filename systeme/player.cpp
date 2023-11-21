@@ -11,18 +11,26 @@ void Player::initSprite(){
     this->sprite.setTexture(this->texture);
 }
 
+    // Definie la taille du personnage
+void Player::setSize(){
+    this->size_x = this->sprite.getTexture()->getSize().x;
+    this->size_y = this->sprite.getTexture()->getSize().y;
+}
+
 Player::Player(){
     this->initTexture();
     this->initSprite();
+    this->setSize();
 }
 
 void Player::updateMovement()
 {
-    std::cout << "x:" << this->sprite.getPosition().x << " y:" << this->sprite.getPosition().y << "\n";
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q)) //gauche
+    //std::cout << "x:" << this->sprite.getPosition().x << " y:" << this->sprite.getPosition().y << "\n";
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q)) // Gauche
     {
         if (this->direction_horizontale == 1){
-            this->sprite.move( this->sprite.getTexture()->getSize().x/2, 0.f);
+            this->sprite.move( this->size_x, 0.f);
         }
         this->direction_horizontale = -1;
         this->sprite.move(this->direction_horizontale, 0.f);
@@ -31,7 +39,7 @@ void Player::updateMovement()
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) // Droite
     {
         if (this->direction_horizontale == -1){
-            this->sprite.move( -100, 0.f);
+            this->sprite.move( -this->size_x, 0.f);
         }
         this->direction_horizontale = 1;
         this->sprite.move(1.f, 0.f);
