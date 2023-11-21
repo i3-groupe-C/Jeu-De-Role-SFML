@@ -7,7 +7,8 @@ class Player
         sf::Texture texture;
 
         //Animation
-
+        int direction_horizontale = 0;
+        int direction_verticale = 0;
 
         // Mouvement
 
