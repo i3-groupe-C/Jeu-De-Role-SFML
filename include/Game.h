@@ -1,8 +1,7 @@
-#include "../header.h"
 #include "Player.h"
+#include "../header.h"
 
-class Game
-{
+class Game{
 private :
     sf::RenderWindow window;
     sf::Event ev;

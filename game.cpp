@@ -1,16 +1,17 @@
 #include "include/Game.h"
 
+Game::Game(){
+    this->initWindow();
+    this->initPlayer();
+}
+
 void Game::initWindow(){
     this->window.create(sf::VideoMode(HAUTEUR, LARGEUR), "Le jeu", sf::Style::Close | sf::Style::Titlebar);
+    this->window.setFramerateLimit(144);
 }
 
 void Game::initPlayer(){
     this->player = new Player();
-}
-
-Game::Game(){
-    this->initWindow();
-    this->initPlayer();
 }
 
 void Game::updatePlayer()
@@ -41,6 +42,7 @@ void Game::render()
 {
     this->window.clear();
 
+    this->renderPlayer();
     //Render game
 
     this->window.display();

@@ -2,7 +2,7 @@
 #define HEADER_FILE
 
 #define HAUTEUR 600
-#define LARGEUR 800
+#define LARGEUR 400
 
 #include <iostream>
 #include <time.h>

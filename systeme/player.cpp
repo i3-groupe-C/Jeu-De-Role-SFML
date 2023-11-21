@@ -1,24 +1,22 @@
 #include "../include/Player.h"
+#include "../header.h"
 
-void Player::initTexture()
-{
-    if(!this->texture.loadFromFile("data/images/personnages/ichigo2.png")){
+void Player::initTexture(){
+    if(!this->texture.loadFromFile("./data/images/personnages/ichigo1.png")){
         std::cout << "ERROR::PLAYER::Ne peut pas charger l'avatar" << "\n";
-    }
-    else{std::cout << "Sa marche pas";}
+   }
 }
 
-void Player::initSprite()
-{
+void Player::initSprite(){
     this->sprite.setTexture(this->texture);
+    //this->sprite.setTextureRect(sf::IntRect(0,0,164,164));
 }
 
-Player::Player()
-{
+Player::Player(){
     this->initTexture();
     this->initSprite();
 }
-/*
+
 void Player::updateMovement()
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q)) //gauche
@@ -38,11 +36,11 @@ void Player::updateMovement()
         this->sprite.move(0.f, 5.f);
     }
 }
-*/
+
 
 void Player::update()
 {
-    //this->updateMovement();
+    this->updateMovement();
 }
 
 void Player::render(sf::RenderTarget& target)

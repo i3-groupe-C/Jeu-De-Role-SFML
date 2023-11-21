@@ -1,7 +1,7 @@
 // gcc main2.cpp -o main -lsfml-graphics -lsfml-window -lsfml-system -lstdc++
 // export DISPLAY=:0
 // ./main
-#include "include/Game.h"
+#include "./include/Game.h"
 
 int main(int argc, char* argv[]) {
     
@@ -12,10 +12,9 @@ int main(int argc, char* argv[]) {
     while (game.getWindow().isOpen())
     {
         game.update();
-        game.render();
+        game.render();        
     }
     
     
     return 0;
 }
-
