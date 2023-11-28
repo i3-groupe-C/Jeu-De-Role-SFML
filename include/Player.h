@@ -19,6 +19,7 @@ class Player
         float acceleration;
         float drag;
         float gravity;
+        float velocityMaxY;
 
         // Core
 
@@ -29,6 +30,13 @@ class Player
 
     public:
         Player();
+
+        //
+        const sf::FloatRect getGlobalBounds() const;
+
+        //Modifier
+        void setPosition(const float x, const float y);
+        void resetVelocityY(); 
 
         // Functions
         void move(const float dir_x, const float dir_y);

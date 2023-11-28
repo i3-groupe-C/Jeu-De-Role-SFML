@@ -18,6 +18,7 @@ void Player::initPhysique(){
     this->acceleration = 3.f;
     this->drag = 0.95f;
     this->gravity = 4.f;
+    this->velocityMaxY = 15.f;
 }
 
 
@@ -36,7 +37,7 @@ Player::Player(){
 
 void Player::updateMovement()
 {
-    //std::cout << "x:" << this->sprite.getPosition().x << " y:" << this->sprite.getPosition().y << "\n";
+    std::cout << "x:" << this->sprite.getPosition().x << " y:" << this->sprite.getPosition().y << "\n";
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q)) // Gauche
     {
@@ -46,11 +47,12 @@ void Player::updateMovement()
         this->direction_horizontale = -1;
         this->move(this->direction_horizontale * 1.f, 0.f);
         this->sprite.setScale(this->direction_horizontale * 1.f, 1.f); // Mirror horizontally
+
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) // Droite
     {
         if (this->direction_horizontale == -1){
-            this->sprite.move( -1*this->size_x, 0.f);
+            this->sprite.move( -this->size_x, 0.f);
         }
         this->direction_horizontale = 1;
         this->move(this->direction_horizontale * 1.f, 0.f);
@@ -82,7 +84,14 @@ void Player::move(const float dir_x, const float dir_y){
 
 
 void Player::updatePhysique(){
+    //Gravity
+    this->velocity.y += 1.0 * this->gravity;
+    if (std::abs(this->velocity.y) > this->velocityMaxY)
+    {
+        this->velocity.y = this->velocityMaxY * ((this->velocity.y < 0.f) ? -1.f : 1.f);
+    }
     
+
     // Déceleration
     this->velocity *= this->drag;
     //Limit deceleration
@@ -104,4 +113,16 @@ void Player::update()
 void Player::render(sf::RenderTarget& target)
 {
     target.draw(this->sprite);
+}
+
+const sf::FloatRect Player::getGlobalBounds() const{
+    return this->sprite.getGlobalBounds();
+}
+
+void Player::setPosition(const float x, const float y){
+    this->sprite.setPosition(x, y);
+}
+
+void Player::resetVelocityY(){
+    this->velocity.y = 0.f;
 }

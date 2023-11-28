@@ -31,6 +31,8 @@ void Game::update(){
 
     // Actualise les données du joueur
     this->updatePlayer();
+
+    this->updateCollision();
 }
 
 void Game::updatePlayer(){
@@ -54,4 +56,16 @@ void Game::render()
 
 const sf::RenderWindow & Game::getWindow() const{
     return this->window;
+}
+
+void Game::updateCollision(){
+    // Collision bottom of screen
+    if(this->player->getGlobalBounds().top + this->player->getGlobalBounds().height > this->window.getSize().y)
+    {  
+        this->player->resetVelocityY();
+        this->player->setPosition(
+            this->player->getGlobalBounds().left,
+            this->window.getSize().y - this->player->getGlobalBounds().height
+        );
+    }
 }

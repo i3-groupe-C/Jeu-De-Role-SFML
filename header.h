@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <time.h>
+#include<unistd.h>
 
 // SFML library
 #include <SFML/System.hpp>
