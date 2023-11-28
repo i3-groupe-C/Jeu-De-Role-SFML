@@ -15,8 +15,10 @@ class Player
         // Physique
         sf::Vector2f velocity;
         float velocityMax;
+        float velocityMin;
         float acceleration;
         float drag;
+        float gravity;
 
         // Core
 
@@ -29,6 +31,7 @@ class Player
         Player();
 
         // Functions
+        void move(const float dir_x, const float dir_y);
         void updatePhysique();
         void updateMovement();
         void update();

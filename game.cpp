@@ -9,7 +9,7 @@ Game::Game(){
     // Créer la fenetre
 void Game::initWindow(){
     this->window.create(sf::VideoMode(HAUTEUR, LARGEUR), "Le jeu", sf::Style::Close | sf::Style::Titlebar);
-    this->window.setFramerateLimit(144);
+    this->window.setFramerateLimit(60);
 }
 
     // Créer un joueur

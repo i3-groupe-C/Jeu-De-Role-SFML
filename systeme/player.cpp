@@ -11,11 +11,15 @@ void Player::initSprite(){
     this->sprite.setTexture(this->texture);
 }
 
-/*
+
 void Player::initPhysique(){
-    //this->velocity
+    this->velocityMax = 10.f;
+    this->velocityMin = 1.f;
+    this->acceleration = 3.f;
+    this->drag = 0.95f;
+    this->gravity = 4.f;
 }
-*/
+
 
     // Definie la taille du personnage
 void Player::setSize(){
@@ -27,7 +31,7 @@ Player::Player(){
     this->initTexture();
     this->initSprite();
     this->setSize();
-    //this->initPhysique();
+    this->initPhysique();
 }
 
 void Player::updateMovement()
@@ -40,37 +44,61 @@ void Player::updateMovement()
             this->sprite.move( this->size_x, 0.f);
         }
         this->direction_horizontale = -1;
-        this->sprite.move(this->direction_horizontale * 1.f, 0.f);
+        this->move(this->direction_horizontale * 1.f, 0.f);
         this->sprite.setScale(this->direction_horizontale * 1.f, 1.f); // Mirror horizontally
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) // Droite
     {
         if (this->direction_horizontale == -1){
-            this->sprite.move( -this->size_x, 0.f);
+            this->sprite.move( -1*this->size_x, 0.f);
         }
         this->direction_horizontale = 1;
-        this->sprite.move(this->direction_horizontale * 1.f, 0.f);
+        this->move(this->direction_horizontale * 1.f, 0.f);
         this->sprite.setScale(this->direction_horizontale * 1.f, 1.f); // Mirror horizontally
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Z)) // Haut
     {
-        this->sprite.move(0.f, -1.f);
+        this->move(0.f, -1.f);
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) // Bas
     {
-        this->sprite.move(0.f, 1.f);
+        this->move(0.f, 1.f);
     }
 }
 
-/*
-void updatePhysique(){
-    //this->
+
+
+void Player::move(const float dir_x, const float dir_y){
+    // Acceleration
+    this->velocity.x += dir_x * this->acceleration;
+    // this->velocity.y += dir_y * this->acceleration; GRAVITE
+    //Limit velocity
+    if(std::abs(this->velocity.x) > this->velocityMax)
+    {
+        this->velocity.x = this->velocityMax * ((this->velocity.x < 0.f) ? -1.f : 1.f );
+    }
+
 }
-*/
+
+
+void Player::updatePhysique(){
+    
+    // Déceleration
+    this->velocity *= this->drag;
+    //Limit deceleration
+    if(std::abs(this->velocity.x) < this->velocityMin)
+        this->velocity.x = 0.f;
+    if (std::abs(this->velocity.y) < this->velocityMin)
+        this->velocity.y = 0.f;
+    
+    this->sprite.move(this->velocity);
+}
+
 
 void Player::update()
 {
     this->updateMovement();
+    this->updatePhysique();
 }
 
 void Player::render(sf::RenderTarget& target)
