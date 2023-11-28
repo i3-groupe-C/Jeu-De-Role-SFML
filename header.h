@@ -1,8 +1,8 @@
 #ifndef HEADER_FILE
 #define HEADER_FILE
 
-#define HAUTEUR 600
-#define LARGEUR 400
+#define HAUTEUR 800
+#define LARGEUR 600
 
 #include <iostream>
 #include <time.h>

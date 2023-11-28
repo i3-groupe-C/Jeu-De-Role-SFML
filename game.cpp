@@ -9,7 +9,8 @@ Game::Game(){
     // Créer la fenetre
 void Game::initWindow(){
     this->window.create(sf::VideoMode(HAUTEUR, LARGEUR), "Le jeu", sf::Style::Close | sf::Style::Titlebar);
-    this->window.setFramerateLimit(60);
+    this->window.setFramerateLimit(180);
+    window.setVerticalSyncEnabled(false);
 }
 
     // Créer un joueur
@@ -35,6 +36,7 @@ void Game::update(){
 
 void Game::updatePlayer(){
     this->player->update(); // Fonction Player::update
+    this->updateCollision();
 }
 
 void Game::renderPlayer(){
@@ -54,4 +56,16 @@ void Game::render()
 
 const sf::RenderWindow & Game::getWindow() const{
     return this->window;
+}
+
+void Game :: updateCollision()
+{
+    //collision en bas de l'ecran
+    if(this->player->getGlobalBounds().top + this->player->getGlobalBounds().height> this->window.getSize().y)
+    {   this->player->resetVelocityY();
+        this->player->setPosition(
+            this->player->getGlobalBounds().left,
+            this->window.getSize().y - this->player->getGlobalBounds().height
+        );
+    }
 }

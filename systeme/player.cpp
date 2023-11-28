@@ -48,7 +48,7 @@ void Player::updateMovement()
         this->sprite.setScale(this->direction_horizontale * 1.f, 1.f); // Mirror horizontally
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) // Droite
-    {
+    {   
         if (this->direction_horizontale == -1){
             this->sprite.move( -1*this->size_x, 0.f);
         }
@@ -104,4 +104,19 @@ void Player::update()
 void Player::render(sf::RenderTarget& target)
 {
     target.draw(this->sprite);
+}
+
+const sf:: FloatRect Player::getGlobalBounds() const
+{
+    return this->sprite.getGlobalBounds();
+}
+
+void Player :: setPosition(const float x, const float y)
+{
+    this->sprite.setPosition(x,y);
+}
+
+void Player :: resetVelocityY()
+{
+    this->velocity.y = 0.f;
 }

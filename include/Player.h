@@ -30,6 +30,11 @@ class Player
     public:
         Player();
 
+        const sf::FloatRect getGlobalBounds() const;
+        //Modifiers
+        void setPosition(const float x, const float y);
+        void resetVelocityY();
+
         // Functions
         void move(const float dir_x, const float dir_y);
         void updatePhysique();
