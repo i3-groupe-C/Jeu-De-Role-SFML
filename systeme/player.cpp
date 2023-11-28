@@ -11,6 +11,12 @@ void Player::initSprite(){
     this->sprite.setTexture(this->texture);
 }
 
+/*
+void Player::initPhysique(){
+    //this->velocity
+}
+*/
+
     // Definie la taille du personnage
 void Player::setSize(){
     this->size_x = this->sprite.getTexture()->getSize().x;
@@ -21,6 +27,7 @@ Player::Player(){
     this->initTexture();
     this->initSprite();
     this->setSize();
+    //this->initPhysique();
 }
 
 void Player::updateMovement()
@@ -33,8 +40,8 @@ void Player::updateMovement()
             this->sprite.move( this->size_x, 0.f);
         }
         this->direction_horizontale = -1;
-        this->sprite.move(this->direction_horizontale, 0.f);
-        this->sprite.setScale(this->direction_horizontale, 1.f); // Mirror horizontally
+        this->sprite.move(this->direction_horizontale * 1.f, 0.f);
+        this->sprite.setScale(this->direction_horizontale * 1.f, 1.f); // Mirror horizontally
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) // Droite
     {
@@ -42,8 +49,8 @@ void Player::updateMovement()
             this->sprite.move( -this->size_x, 0.f);
         }
         this->direction_horizontale = 1;
-        this->sprite.move(1.f, 0.f);
-        this->sprite.setScale(1.f, 1.f); // Mirror horizontally
+        this->sprite.move(this->direction_horizontale * 1.f, 0.f);
+        this->sprite.setScale(this->direction_horizontale * 1.f, 1.f); // Mirror horizontally
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Z)) // Haut
     {
@@ -55,6 +62,11 @@ void Player::updateMovement()
     }
 }
 
+/*
+void updatePhysique(){
+    //this->
+}
+*/
 
 void Player::update()
 {
