@@ -32,11 +32,12 @@ void Game::update(){
 
     // Actualise les données du joueur
     this->updatePlayer();
+    this->updateCollision();
 }
 
 void Game::updatePlayer(){
     this->player->update(); // Fonction Player::update
-    this->updateCollision();
+    
 }
 
 void Game::renderPlayer(){
