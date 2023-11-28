@@ -86,7 +86,7 @@ void Player::move(const float dir_x, const float dir_y){
 void Player::updatePhysique(){
     //Gravity
     this->velocity.y += 1.0 * this->gravity;
-    if (std::abs(this->velocity.y) > this->velocityMaxY)
+    if (std::abs(this->velocity.x) > this->velocityMaxY)
     {
         this->velocity.y = this->velocityMaxY * ((this->velocity.y < 0.f) ? -1.f : 1.f);
     }
