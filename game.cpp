@@ -4,7 +4,7 @@
 void Game::initWindow()
 {
 	this->window.create(sf::VideoMode(800, 600), "Métroide à la gym", sf::Style::Close | sf::Style::Titlebar);
-	this->window.setFramerateLimit(60);
+	this->window.setFramerateLimit(60); //fixe la limite de rafraîchissement à 60 images
 }
 
 void Game::initTileSheet()
@@ -61,10 +61,10 @@ Game::Game()
 {
 	this->initWindow();
 	this->initGUI();
-	this->initTileSheet();
-	this->initWorld();
+	this->initTileSheet(); // pour afficher la texture 
+	this->initWorld(); // pour afficher le fond d'ecran
 	this->initPlayer();
-	this->initTileMap();
+	this->initTileMap(); //pour decouper le personnage dans l'image
 }
 
 void Game::updatePlayer()
@@ -76,6 +76,8 @@ void Game::updateCollision()
 {
 	//Collision bottom of screen
 	if (this->player->getPosition().y + this->player->getGlobalBounds().height > this->window.getSize().y)
+    //Cette ligne vérifie si la position en Y du joueur plus la hauteur du joueur dépasse le sol de la fenêtre du jeu :
+     // le joueur n'est pas en-dessous de la fenêtre
 	{
 		this->player->setCanJump(true);
 		this->player->resetVelocityY();
