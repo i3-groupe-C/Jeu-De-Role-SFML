@@ -1,7 +1,11 @@
 CXX = g++
 CXXFLAGS = -std=c++11 -g
+<<<<<<< Updated upstream
 SRC = main.cpp Game.cpp Player.cpp Tile.cpp stdafx.cpp TileMap.cpp
 #SRC = Game_1/main.cpp Game_1/Game.cpp Player.cpp Tile.cpp stdafx.cpp TileMap.cpp
+=======
+SRC = main.cpp game.cpp Player.cpp Tile.cpp stdafx.cpp TileMap.cpp
+>>>>>>> Stashed changes
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 EXEC = main

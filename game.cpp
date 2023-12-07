@@ -4,7 +4,7 @@
 void Game::initWindow()
 {
 	this->window.create(sf::VideoMode(800, 600), "Game 4", sf::Style::Close | sf::Style::Titlebar);
-	this->window.setFramerateLimit(60);
+	this->window.setFramerateLimit(60); //fixe la limite de rafraîchissement à 60 images
 }
 
 void Game::initTileSheet()
@@ -59,12 +59,21 @@ void Game::initGUI()
 
 Game::Game()
 {
+<<<<<<< Updated upstream
 	this->initWindow();
 	this->initGUI(); 
 	this->initTileSheet(); 
 	this->initWorld(); 
 	this->initPlayer();
 	this->initTileMap(); 
+=======
+	this->initWindow();  
+	this->initGUI();
+	this->initTileSheet(); // pour afficher la texture 
+	this->initWorld(); // pour afficher le fond d'ecran
+	this->initPlayer(); 
+	this->initTileMap(); //pour decouper le personnage dans l'image
+>>>>>>> Stashed changes
 }
 
 void Game::updatePlayer()
@@ -76,9 +85,11 @@ void Game::updateCollision()
 {
 	//Collision bottom of screen
 	if (this->player->getPosition().y + this->player->getGlobalBounds().height > this->window.getSize().y)
+    //Cette ligne vérifie si la position en Y du joueur plus la hauteur du joueur dépasse le sol de la fenêtre du jeu :
+     // le joueur n'est pas en-dessous de la fenêtre
 	{
 		this->player->setCanJump(true);
-		this->player->resetVelocityY();
+		this->player->resetVelocityY(); //met sa position en 0
 		this->player->setPosition(
 			this->player->getPosition().x,
 			this->window.getSize().y - this->player->getGlobalBounds().height
@@ -124,7 +135,7 @@ void Game::update()
 
 void Game::renderPlayer()
 {
-	this->player->render(this->window);
+	this->player->render(this->window); //
 }
 
 void Game::renderTileMap()
