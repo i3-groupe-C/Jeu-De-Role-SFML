@@ -86,11 +86,6 @@ void Game::updateCollision()
 	}
 }
 
-void Game::updateTileMap()
-{
-	this->tileMap->update();
-}
-
 void Game::updateGUI()
 {
 	std::stringstream ss;
@@ -131,8 +126,6 @@ void Game::update()
 	this->updatePlayer();
 
 	this->updateCollision();
-
-	this->updateTileMap();
 }
 
 void Game::renderPlayer()

@@ -16,8 +16,7 @@ public:
 	//Functions
 	void addTile(unsigned x, unsigned y);
 	void removeTile(unsigned x, unsigned y);
-
-	void update();
+	
 	void render(sf::RenderTarget& target);
 };
 

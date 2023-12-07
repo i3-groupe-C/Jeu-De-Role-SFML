@@ -51,7 +51,6 @@ public:
 	void updateInput();
 	void updatePlayer();
 	void updateCollision();
-	void updateTileMap();
 	void update();
 
 	void updateGUI();
