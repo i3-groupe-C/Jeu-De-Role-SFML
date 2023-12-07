@@ -1,6 +1,7 @@
 CXX = g++
-CXXFLAGS = -std=c++11
-SRC = main.cpp game.cpp systeme/player.cpp
+CXXFLAGS = -std=c++11 -g
+SRC = main.cpp Game.cpp Player.cpp Tile.cpp stdafx.cpp TileMap.cpp
+#SRC = Game_1/main.cpp Game_1/Game.cpp Player.cpp Tile.cpp stdafx.cpp TileMap.cpp
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 EXEC = main

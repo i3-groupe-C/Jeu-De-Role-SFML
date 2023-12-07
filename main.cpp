@@ -1,20 +1,18 @@
-// gcc main2.cpp -o main -lsfml-graphics -lsfml-window -lsfml-system -lstdc++
-// export DISPLAY=:0
-// ./main
-#include "./include/Game.h"
+#include"stdafx.h"
+#include "Game.h"
 
-int main(int argc, char* argv[]) {
-    
-    srand(time(static_cast<unsigned>(0)));
+int main()
+{
+	srand(static_cast<unsigned>(time(0)));
 
-    Game game;
+	Game game;
 
-    while (game.getWindow().isOpen())
-    {
-        game.update();
-        game.render();        
-    }
-    
-    
-    return 0;
+	while (game.getWindow().isOpen())
+	{
+		game.update();
+		game.render();
+	}
+
+	//End of application
+	return 0;
 }
