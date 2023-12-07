@@ -105,7 +105,7 @@ void Game::update()
 			this->ev.type == sf::Event::KeyReleased &&
 			(
 				this->ev.key.code == sf::Keyboard::Q ||
-				this->ev.key.code == sf::Keyboard::D ||
+				this->ev.key.code == sf::Keyboard::D
 				)
 			)
 		{
