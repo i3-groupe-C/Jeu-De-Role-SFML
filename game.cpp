@@ -60,11 +60,11 @@ void Game::initGUI()
 Game::Game()
 {
 	this->initWindow();
-	this->initGUI();
-	this->initTileSheet();
-	this->initWorld();
+	this->initGUI(); 
+	this->initTileSheet(); 
+	this->initWorld(); 
 	this->initPlayer();
-	this->initTileMap();
+	this->initTileMap(); 
 }
 
 void Game::updatePlayer()
