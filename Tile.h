@@ -10,6 +10,5 @@ public:
 
 	const sf::FloatRect getGlobalBounds() const;
 
-	void update();
 	void render(sf::RenderTarget& target);
 };

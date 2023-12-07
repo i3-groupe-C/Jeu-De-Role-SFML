@@ -163,8 +163,8 @@ void Player::updateMovement()//changement des movements
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) && canJump)//saut
 	{
-		this->score += 1;
-		std::cout << "Score = " << this->getscore() << "\n";
+		this->hp -= 10;
+		std::cout << "HP = " << this->getHp() << "\n";
 		this->velocity.y = -70.f;
 		this->canJump = false;
 	}

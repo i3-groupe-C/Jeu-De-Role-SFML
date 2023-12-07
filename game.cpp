@@ -3,7 +3,7 @@
 
 void Game::initWindow()
 {
-	this->window.create(sf::VideoMode(800, 600), "Game 4", sf::Style::Close | sf::Style::Titlebar);
+	this->window.create(sf::VideoMode(800, 600), "Métroide à la gym", sf::Style::Close | sf::Style::Titlebar);
 	this->window.setFramerateLimit(60);
 }
 
@@ -91,6 +91,19 @@ void Game::updateTileMap()
 	this->tileMap->update();
 }
 
+void Game::updateGUI()
+{
+	std::stringstream ss;
+
+	ss << "Points: " << this->points;
+
+	this->pointText.setString(ss.str());
+
+	//Update player GUI
+	float hpPercent = static_cast<float>(this->player->getHp()) / this->player->getHpMax();
+	this->playerHpBar.setSize(sf::Vector2f(300.f * hpPercent, this->playerHpBar.getSize().y));
+}
+
 void Game::update()
 {
 	//Polling window events
@@ -112,6 +125,8 @@ void Game::update()
 			this->player->resetAnimationTimer();
 		}
 	}
+
+	this->updateGUI();
 
 	this->updatePlayer();
 
@@ -161,10 +176,10 @@ void Game::render()
 	//Draw world
 	this->renderWorld();
 
-	if(this->player->getscore() > 10){
+	if(this->player->getHp() <= 0){
 		//Game over screen
 		this->window.draw(this->gameOverText);
-		std::cout << "Gagner le score est de = " << this->player->getscore() << "\n";
+		std::cout << "Perdu vous avez fini votre séance de sport " << "\n";
 	}
 
 	//Draw all the stuffs

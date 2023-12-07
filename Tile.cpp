@@ -13,11 +13,6 @@ const sf::FloatRect Tile::getGlobalBounds() const
 	return this->sprite.getGlobalBounds();
 }
 
-void Tile::update()
-{
-
-}
-
 void Tile::render(sf::RenderTarget& target)
 {
 	target.draw(this->sprite);

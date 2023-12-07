@@ -54,6 +54,8 @@ public:
 	void updateTileMap();
 	void update();
 
+	void updateGUI();
+
     void renderPlayer();
     void renderTileMap();
 
