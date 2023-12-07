@@ -113,6 +113,13 @@ void Game::update()
 		}
 	}
 
+	if(this->player->getscore() > 10){
+		//Game over screen
+		if (this->player->getHp() <= 0)
+		this->window.draw(this->gameOverText);
+		std::cout << "Gagner le score est de = " << this->player->getscore() << "\n";
+	}
+
 	this->updatePlayer();
 
 	this->updateCollision();

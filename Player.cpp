@@ -7,6 +7,8 @@ void Player::initVariables()
 
 	this->hpMax = 100;
 	this->hp = this->hpMax;
+
+	this->score = 0;
 }
 
 void Player::initTexture()
@@ -62,6 +64,11 @@ const int & Player::getHp() const
 const int & Player::getHpMax() const
 {
 	return this->hpMax;
+}
+
+const int & Player::getscore() const
+{
+	return this->score;
 }
 
 void Player::setHp(const int hp)
@@ -153,6 +160,8 @@ void Player::updateMovement()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) && canJump)
 	{
+		this->score += 1;
+		std::cout << "Score = " << this->getscore() << "\n";
 		this->velocity.y = -70.f;
 		this->canJump = false;
 	}

@@ -18,6 +18,8 @@ private:
 	int hp;
 	int hpMax;
 
+	int score;
+
 	//Physics
 	sf::Vector2f velocity;
 	float velocityMax;
@@ -45,6 +47,7 @@ public:
 	const sf::FloatRect getGlobalBounds() const;
 	const int& getHp() const;
 	const int& getHpMax() const;
+	const int& getscore() const;
 
 	//Modifiers
 	void setPosition(const float x, const float y);
