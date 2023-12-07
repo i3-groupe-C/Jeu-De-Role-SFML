@@ -113,13 +113,6 @@ void Game::update()
 		}
 	}
 
-	if(this->player->getscore() > 10){
-		//Game over screen
-		if (this->player->getHp() <= 0)
-		this->window.draw(this->gameOverText);
-		std::cout << "Gagner le score est de = " << this->player->getscore() << "\n";
-	}
-
 	this->updatePlayer();
 
 	this->updateCollision();
@@ -152,6 +145,7 @@ void Game::renderGUI()
 	this->window.draw(this->pointText);
 	this->window.draw(this->playerHpBarBack);
 	this->window.draw(this->playerHpBar);
+	
 }
 
 // Dessine la map
@@ -166,6 +160,12 @@ void Game::render()
 
 	//Draw world
 	this->renderWorld();
+
+	if(this->player->getscore() > 10){
+		//Game over screen
+		this->window.draw(this->gameOverText);
+		std::cout << "Gagner le score est de = " << this->player->getscore() << "\n";
+	}
 
 	//Draw all the stuffs
 	this->player->render(this->window);
