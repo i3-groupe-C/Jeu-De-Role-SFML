@@ -1,3 +1,5 @@
+// export DISPLAY=:0
+// ./main
 #include"stdafx.h"
 #include "Game.h"
 
